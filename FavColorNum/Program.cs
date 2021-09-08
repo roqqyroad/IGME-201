@@ -16,39 +16,80 @@ namespace FavColorNum
             //a namespace is there to name stuff (duh) EX: FavColorNum.Program would call Program inside of FavColorNum
             //Be sure to run as start without debugging so it doesnt close instantly and do throughout 
 
+            //PURPOSE: ask for the user's favourite colour and number and write the color the number of times (all in console)
 
             // Ask user for a colour in the console and store it in a variable
-            Console.Write("What's your favourite colour? \t");
+            // Ask the user for color in the console
+           // Console.Write("What's your fav color? \t");
 
             // Save the answer
-            // Using a variable
-            string favColour = Console.ReadLine();
+            // Use a variable
+           // string favColor = Console.ReadLine();
 
-            // Ask user for a number in the console and store it in a variable
-            Console.Write("\n What's your favourite number? \t");
+            // Ask for a number
+           // Console.Write("What's your fav number? \t");
+
+            //ask for number
+            //read number in
+            //try and convert to number
+            //if fails loop back to top
+            //if succeed continue through
+            Console.Write("What's your fav color? \t");
+
             // Save the answer
-            string favNumAns = Console.ReadLine();
+            // Use a variable
+            string favColor = Console.ReadLine();
+            
+           
+            int favNumber = 0;
+             bool validNumGiven = false;
+            do
+            { 
+
+
+                // Ask for a number
+                Console.Write("What's your fav number? \t");
+                //save the answer
+                string favNumberAnswer = Console.ReadLine();
+
+                try
+                {
+                    favNumber = Convert.ToInt32(favNumberAnswer);
+                    validNumGiven = true;
+                }
+                catch
+                {
+                    Console.WriteLine("Not a number");
+                    validNumGiven = false;
+                }
+                } while(validNumGiven == false);
+
+            /*
+            // save the answer
+            string favNumberAnswer = Console.ReadLine();
+
             int favNumber = 0;
             try
             {
-                favNumber = Convert.ToInt32(favNumAns);
+                favNumber = Convert.ToInt32(favNumberAnswer);
             }
             catch
             {
-                Console.WriteLine("That's not a number!\n");
+                Console.WriteLine("Nah, a number");
             }
-            //vv doesn't work well because if they input a string instead of a
-            //number we will end up with some upset angry nonsense
-            //int favNum = Convert.ToInt32(favNumAns);
+            */
 
-            switch (favColour)
+            switch (favColor)
             {
+                case "purple":
                 case "red":
                     Console.ForegroundColor = ConsoleColor.Red;
                     break;
+
                 case "green":
                     Console.ForegroundColor = ConsoleColor.Green;
                     break;
+
                 case "blue":
                     Console.ForegroundColor = ConsoleColor.Blue;
                     break;
@@ -59,12 +100,12 @@ namespace FavColorNum
                     break;
             }
 
-            // Print the user's colour the number of times given in the console
-            for (int i = 0; i < favNum; i++)
+            // Print out the color favNumber number of times
+            for (int i = 0; i < favNumber; i++)
             {
-                Console.Write("Your favourite colour is " + favColour + " \n");
+                Console.WriteLine("Your favorite color is " + favColor);
             }
-            
+
         }
     }
 }
