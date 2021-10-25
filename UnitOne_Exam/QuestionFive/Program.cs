@@ -5,7 +5,7 @@ namespace NumberSort
     class Program
     {
         // the definition of the delegate function data type
-        delegate double sortingFunction(double[] a);
+        delegate string sortingFunction(string[] a);
 
         static void Main(string[] args)
         {
@@ -18,7 +18,7 @@ namespace NumberSort
 
         // a label to allow us to easily loop back to the start if there are input issues
         start:
-            Console.WriteLine("Enter a list of space-separated numbers");
+            Console.WriteLine("Enter a sentence to have the words sorted");
 
             // read the space-separated string of numbers
             string sNumbers = Console.ReadLine();
@@ -54,7 +54,7 @@ namespace NumberSort
                 {
                     // if an exception occurs
                     // indicate which number is invalid
-                    Console.WriteLine($"Number #{nUnsortedLength + 1} is not a valid number.");
+                    Console.WriteLine($"Number #{nUnsortedLength + 1} is not a valid word.");
 
                     // loop back to the start
                     goto start;
@@ -141,7 +141,7 @@ namespace NumberSort
             foreach (string thisNum in array)
             {
                 // if the current value is less than the saved lowest value
-                if (thisNum < returnVal)
+                if (thisNum.CompareTo(returnVal) <= 0)
                 {
                     // save this as the lowest value
                     returnVal = thisNum;
@@ -165,7 +165,7 @@ namespace NumberSort
             foreach (string thisNum in array)
             {
                 // if the current value is greater than the saved highest value
-                if (thisNum > returnVal)
+                if (thisNum.CompareTo(returnVal) >= 0)
                 {
                     // save this as the highest value
                     returnVal = thisNum;
