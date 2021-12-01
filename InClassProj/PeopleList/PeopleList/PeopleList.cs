@@ -89,7 +89,7 @@ namespace PeopleList
 
                 // 7. set lvi equal to a new ListViewItem object
                 // this will be the new row we are adding to the ListView
-
+                lvi = new ListViewItem;
 
                 // alternate row color
                 if (lviCntr % 2 == 0)
@@ -103,42 +103,42 @@ namespace PeopleList
 
                 // 8. lvi.Text is the text that shows in the first column of the row
                 // set it equal to the person's name
-
+                lvi.Text = thisPerson.name;
 
                 // since the email address is the key into the SortedList
                 // let's save that in the general purpose Tag field
-                //lvi.Tag = thisPerson.email;
+                lvi.Tag = thisPerson.email;
 
                 // 9. all additional columns are stored in the lvi.SubItems array
                 // set lvsi equal to a new ListViewItem.ListViewSubItem object
-
+                lvsi = new ListViewItem.ListViewSubItem();
 
                 // 10. lvsi.Text is the text that shows in each subsequent column
                 // set it equal to the person's email
-
+                lvsi.Text = thisPerson.email;
 
                 // add the ListViewSubItem to the lvi.SubItems array
                 lvi.SubItems.Add(lvsi);
 
                 // 11. we need another column to show the person's age
                 // set lvsi equal to a new ListViewItem.ListViewSubItem object
-
+                lvsi = new ListViewItem.ListViewSubItem();
 
                 // 12. set lvsi.Text equal to the person's age
                 // note that age is an int, so you will need to convert it to a string
                 // you can use Convert.ToString(int) or the ToString() method of the integer
-
+                lvsi.Text = thisPerson.age;
 
                 // 13. add the ListViewSubItem to the lvi.SubItems array
-
+                lvi.SubItems.Add(lvsi);
 
                 // 14. we need another column to show the person's License Id
                 // set lvsi equal to a new ListViewItem.ListViewSubItem object
-
+                lvsi = new ListViewItem.ListViewSubItem();
 
                 // 15. set lvsi.Text equal to the person's License Id
                 // note that license id is an int, so you will need to convert it to a string
-
+                lvsi.Text = thisPerson.LisenceID.ToString();
 
                 // 16. add the ListViewSubItem to the lvi.SubItems array
 
@@ -150,26 +150,26 @@ namespace PeopleList
 
                 // 18. if thisPerson is a Student (replace true with the proper test)
                 // refer to class code examples for how to use GetType() and typeof()
-                if (true)
+                if (thisPerson.GetType() == typeOf(Student))
                 {
                     // 19. declare a Student variable set to thisPerson cast as a (Student)
-
+                    Student.thisStudent = (Student)thisPerson;
 
                     // 20. set lvsi.Text equal to the student's GPA
                     // note that gpa is a double, so you will need to convert it to a string
-
+                    lvsi.Text = thisStudent.gpa.ToString();
                 }
                 else
                 {
                     // 21. declare a Teacher variable set to thisPerson cast as a (Teacher)
-
+                    Teacher.thisTeacher = (Teacher)thisPerson;
 
                     // 22. set lvsi.Text equal to the teacher's Specialty
-
+                    lvsi.Text = thisTeacher.specialty;
                 }
 
                 // 23. add the ListViewSubItem to the lvi.SubItems array
-
+                lvi.SubItems.Add(lvsi);
 
                 // if this row is the first email that should be shown
                 if (lviCntr == nStartEl)
@@ -183,17 +183,17 @@ namespace PeopleList
 
                 // we completed 1 row of the ListView
                 // we can finally add this ListViewItem to the Items array
-                //this.peopleListView.Items.Add(lvi);
+                this.peopleListView.Items.Add(lvi);
 
                 // increment our row counter
                 ++lviCntr;
             }
 
             // set the Top ListViewItem of the list to show on the screen
-            //this.peopleListView.TopItem = firstLVI;
+            this.peopleListView.TopItem = firstLVI;
 
             // EndUpdate() unlocks the ListView
-            //this.peopleListView.EndUpdate();
+            this.peopleListView.EndUpdate();
         }
 
         // handle clicking the Exit button
@@ -210,7 +210,7 @@ namespace PeopleList
             {
                 string email;
 
-                // 24. The ListView has a SelectedItems array field 
+                // 24. The ListView hasS a SelectedItems array field 
                 // which is the array of ListViewItems which are currently selected
                 // Since we have MultiSelect set to false, only one row can be selected
                 // so we only check SelectedItems[0]
@@ -218,12 +218,13 @@ namespace PeopleList
                 // Set email = the email address saved in the Tag field for SelectedItems[0]
                 // Since Tag is a System.Object,
                 // use the ToString() method to convert the object to a string
-
+                email = peopleListView.SelectedItems[0].Tag.ToString();
 
                 // 25. if email is not equal to null
-                //if ( )
+                if (email != null)
                 {
                     // 26. remove the entry from Globals.people associated with the email address
+                    Globals.people.Remove(email);
                 }
             }
             catch
@@ -232,7 +233,7 @@ namespace PeopleList
             }
 
             // 27. repaint the ListView passing null as the email address to start from the top of the SortedList
-
+            PaintListView(null);
         }
 
         // handle clicking the Add button

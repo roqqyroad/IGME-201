@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{7AEBD913-25A3-4600-883F-B776629B36B7}</ProjectGuid>
+    <ProjectGuid>{545D51BF-0FCE-4784-9FC1-C559AEFC18B6}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>Question11</RootNamespace>
-    <AssemblyName>Question11</AssemblyName>
+    <RootNamespace>LinkedLists</RootNamespace>
+    <AssemblyName>LinkedLists</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -43,9 +43,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="FriendBase.cs" />
+    <Compile Include="LinkedList.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Queue.cs" />
+    <Compile Include="Stack.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
